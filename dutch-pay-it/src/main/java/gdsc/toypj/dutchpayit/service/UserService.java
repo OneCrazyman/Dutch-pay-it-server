@@ -1,9 +1,11 @@
 package gdsc.toypj.dutchpayit.service;
 
 import gdsc.toypj.dutchpayit.domain.Menu;
+import gdsc.toypj.dutchpayit.domain.Shop;
 import gdsc.toypj.dutchpayit.domain.User;
 import gdsc.toypj.dutchpayit.dto.AddUserDto;
 import gdsc.toypj.dutchpayit.repository.MenuRepository;
+import gdsc.toypj.dutchpayit.repository.ShopRepository;
 import gdsc.toypj.dutchpayit.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
     private final MenuRepository menuRepository;
+    private final ShopRepository shopRepository;
 
     // 사용자 생성
     @Transactional
@@ -28,8 +31,13 @@ public class UserService {
 
     // 리스트 조회
     @Transactional
-    public List<Menu> getMyList(Long userId){
+    public List<Menu> getMenuList(Long userId){
         return menuRepository.createdByMe(userId);
+    }
+
+    @Transactional
+    public List<Shop> getShopList(Long userId){
+        return shopRepository.createdByMe(userId);
     }
 
     //삭제
