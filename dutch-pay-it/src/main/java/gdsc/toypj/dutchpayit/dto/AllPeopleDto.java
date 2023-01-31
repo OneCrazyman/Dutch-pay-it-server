@@ -8,6 +8,7 @@ public class AllPeopleDto {
     private Long peopleId;
     private String name;
     private String menu;
+    private String shop;
     private int price;
     private int number;
 
@@ -15,6 +16,7 @@ public class AllPeopleDto {
         peopleId = people.getId();
         name = people.getName();
         menu = people.getMenu();
+        shop = people.getShop();
         price = people.getPrice();
         number = people.getNumber();
     }
