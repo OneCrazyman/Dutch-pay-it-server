@@ -3,6 +3,8 @@ package gdsc.toypj.dutchpayit.dto;
 import gdsc.toypj.dutchpayit.domain.Menu;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class AllMenuDto {
     private Long menuId;
@@ -10,6 +12,7 @@ public class AllMenuDto {
     private String shop;
     private int number;
     private float price;
+    private LocalDateTime startT;
 
     public AllMenuDto(Menu menu){
         menuId = menu.getId();
@@ -17,5 +20,6 @@ public class AllMenuDto {
         shop = menu.getShop();
         number = menu.getNumber();
         price = menu.getPrice();
+        startT = menu.getStartT();
     }
 }
