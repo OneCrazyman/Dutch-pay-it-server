@@ -23,7 +23,7 @@ public class MenuService {
     public Long createMenu(Long userId, CreateMenuDto createMenuDto){
         User user = userRepository.findOne(userId);
         Menu menu = Menu.createMenu(user, createMenuDto.getMenuName(), createMenuDto.getPrice(),
-                createMenuDto.getNumber(), createMenuDto.getShop());
+                createMenuDto.getNumber(), createMenuDto.getShop(), createMenuDto.getStartT());
         menuRepository.save(menu);
         return menu.getId();
     }

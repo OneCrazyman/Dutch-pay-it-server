@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -23,13 +24,14 @@ public class Menu {
     private float price;
     private int number;
     private String shop;
+    private LocalDateTime startT;
 
     public void addUser(User user){
         this.user=user;
         user.getMenuList().add(this);
     }
 
-    public static Menu createMenu(User user, String menuName, float price, int number, String shop){
+    public static Menu createMenu(User user, String menuName, float price, int number, String shop, LocalDateTime startT){
 
         Menu menu = new Menu();
         menu.addUser(user);
@@ -37,6 +39,7 @@ public class Menu {
         menu.setPrice(price);
         menu.setNumber(number);
         menu.setShop(shop);
+        menu.setStartT(startT);
 
         return menu;
     }

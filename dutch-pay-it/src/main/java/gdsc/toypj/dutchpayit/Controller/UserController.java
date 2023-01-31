@@ -1,10 +1,8 @@
 package gdsc.toypj.dutchpayit.Controller;
 
 import gdsc.toypj.dutchpayit.domain.Menu;
-import gdsc.toypj.dutchpayit.domain.Shop;
 import gdsc.toypj.dutchpayit.dto.AddUserDto;
 import gdsc.toypj.dutchpayit.dto.MenuListDto;
-import gdsc.toypj.dutchpayit.dto.ShopListDto;
 import gdsc.toypj.dutchpayit.response.SuccessResponse;
 import gdsc.toypj.dutchpayit.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -35,17 +33,6 @@ public class UserController {
         List<Menu> menu = userService.getMenuList(UserId);
 
         List<MenuListDto> collect = menu.stream().map(r -> new MenuListDto(r)).collect(Collectors.toList());
-
-        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
-
-    }
-
-    @GetMapping("/get/myshop/{UserId}")
-    public ResponseEntity getShopList(@PathVariable Long UserId){
-
-        List<Shop> shop = userService.getShopList(UserId);
-
-        List<ShopListDto> collect = shop.stream().map(r -> new ShopListDto(r)).collect(Collectors.toList());
 
         return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
 
