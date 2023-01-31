@@ -15,7 +15,7 @@ public class Shop {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "key_name")
     private User user;
 
     private LocalDateTime startT;
