@@ -23,6 +23,9 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Menu> menuList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Shop> shopList = new ArrayList<>();
+
     public static User addUser(String name){
         User user = new User();
         user.setName(name);

@@ -4,14 +4,14 @@ import gdsc.toypj.dutchpayit.domain.Menu;
 import lombok.Data;
 
 @Data
-public class MyListDto {
+public class MenuListDto {
     private Long menuId;
     private String menuName;
     private float price;
     private int number;
     private String shop;
 
-    public MyListDto(Menu menu){
+    public MenuListDto(Menu menu){
         menuId = menu.getId();
         menuName = menu.getMenuName();
         price = menu.getPrice();

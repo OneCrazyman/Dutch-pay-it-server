@@ -29,7 +29,7 @@ public class MenuController {
         return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,reserveId));
     }
 
-    //모든 매치 보여주기
+    //모든 메뉴 보여주기
     @GetMapping("/get/all")
     public ResponseEntity getAllMenu(){
 
