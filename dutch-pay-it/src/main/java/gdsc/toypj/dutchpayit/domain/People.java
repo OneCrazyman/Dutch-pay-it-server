@@ -21,6 +21,7 @@ public class People {
 
     private String name;
     private String menu;
+    private String shop;
     private int price;
     private int number;
 
@@ -29,12 +30,13 @@ public class People {
         user.getPeopleList().add(this);
     }
 
-    public static People createPeople(User user, String name, String menu, int price, int number){
+    public static People createPeople(User user, String name, String menu, String shop, int price, int number){
 
         People people = new People();
         people.addUser(user);
         people.setName(name);
         people.setMenu(menu);
+        people.setShop(shop);
         people.setPrice(price);
         people.setNumber(number);
 

@@ -23,7 +23,7 @@ public class PeopleService {
     public Long createPeople(Long userID, CreatePeopleDto createPeopleDto){
         User user = userRepository.findOne(userID);
         People people = People.createPeople(user, createPeopleDto.getName(),
-                createPeopleDto.getMenu(),createPeopleDto.getPrice(), createPeopleDto.getNumber());
+                createPeopleDto.getMenu(),createPeopleDto.getShop(), createPeopleDto.getPrice(), createPeopleDto.getNumber());
         peopleRepository.save(people);
         return people.getId();
     }
