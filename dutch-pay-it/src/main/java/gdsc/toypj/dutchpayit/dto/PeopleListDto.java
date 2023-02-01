@@ -9,7 +9,7 @@ public class PeopleListDto {
     private String name;
     private String menu;
     private String shop;
-    private int price;
+    private float price; //float로 변경
     private int number;
 
     public void AllPeopleDto(People people){

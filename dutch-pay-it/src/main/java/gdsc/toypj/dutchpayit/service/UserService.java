@@ -22,12 +22,26 @@ public class UserService {
 
     // 사용자 생성
     @Transactional
-    public Long createUser(AddUserDto addUserDto){
+    public User createUser(AddUserDto addUserDto){
         User user = User.addUser(addUserDto.getName());
         userRepository.save(user);
-        return user.getId();
+
+        return user;
     }
 
+    //생성된 유저 전체 조회
+    @Transactional
+    public List<User> allUser(){
+        List<User> user = userRepository.findAll();
+        return user;
+    }
+
+    //최신 유저 조회
+    @Transactional
+    public User OneUser(){
+        User user = userRepository.findOneUser();
+        return user;
+    }
 
     // 리스트 조회
     @Transactional
@@ -50,4 +64,7 @@ public class UserService {
         //삭제
         userRepository.delete(findUser);
     }
+
+//    @Transactional
+//    public Integer getUserKey
 }

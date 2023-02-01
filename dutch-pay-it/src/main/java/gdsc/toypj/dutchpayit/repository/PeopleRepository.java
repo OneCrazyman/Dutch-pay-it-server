@@ -39,11 +39,9 @@ public class PeopleRepository {
                 .getResultList();
     }
 
-
     public List<People> createdByMe(Long userId){
         return em.createQuery("select r from People r" +
                         " join fetch r.user m where m.id =: userId", People.class)
                 .setParameter("userId",userId).getResultList();
     }
-
 }

@@ -33,4 +33,11 @@ public class UserRepository {
                 .getResultList();
     }
 
+    //최신 유저키 반환
+    public User findOneUser() {
+//        r.MAX(id),r.name
+
+        return em.createQuery("select r.id from User r order by r.id", User.class)
+                .getSingleResult();
+    }
 }
