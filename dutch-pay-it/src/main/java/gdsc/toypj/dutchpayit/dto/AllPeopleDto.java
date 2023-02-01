@@ -9,7 +9,7 @@ public class AllPeopleDto {
     private String name;
     private String menu;
     private String shop;
-    private int price;
+    private float price; //float
     private int number;
 
     public AllPeopleDto(People people){

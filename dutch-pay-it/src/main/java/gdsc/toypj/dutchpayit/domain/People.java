@@ -22,7 +22,7 @@ public class People {
     private String name;
     private String menu;
     private String shop;
-    private int price;
+    private float price; //float로 수정
     private int number;
 
     public void addUser(User user){

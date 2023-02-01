@@ -1,7 +1,10 @@
 package gdsc.toypj.dutchpayit.Controller;
 
 import gdsc.toypj.dutchpayit.domain.Menu;
+import gdsc.toypj.dutchpayit.domain.User;
 import gdsc.toypj.dutchpayit.dto.AddUserDto;
+import gdsc.toypj.dutchpayit.dto.AllMenuDto;
+import gdsc.toypj.dutchpayit.dto.AllUserDto;
 import gdsc.toypj.dutchpayit.dto.MenuListDto;
 import gdsc.toypj.dutchpayit.response.SuccessResponse;
 import gdsc.toypj.dutchpayit.service.UserService;
@@ -19,11 +22,38 @@ import java.util.stream.Collectors;
 public class UserController {
     private final UserService userService;
 
-    //회원가입
+    // 사용자 생성 // 성공시 생성된 유저키를 반환
     @PostMapping("/create")
     public ResponseEntity createUser(@RequestBody AddUserDto addUserDto){
-        userService.createUser(addUserDto);
-        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,null));
+        User user = userService.createUser(addUserDto);
+        
+
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,user));
+
+    }
+
+    //최근 유저키 가져오기
+    @GetMapping("/get/one")
+    public ResponseEntity getOneUser(){
+
+        User user = userService.OneUser();
+
+//        collect = user.stream().map(r -> new AllUserDto(r)).collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,user));
+
+    }
+
+    //모든 유저 보여주기
+    @GetMapping("/get/all")
+    public ResponseEntity getAllUser(){
+
+        List<User> user = userService.allUser();
+
+        List<AllUserDto> collect = user.stream().map(r -> new AllUserDto(r)).collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
+
     }
 
     //내가 먹은 메뉴 보여주기
