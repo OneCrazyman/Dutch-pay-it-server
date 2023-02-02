@@ -28,10 +28,18 @@ public class PeopleRepository {
         em.remove(people);
     }
 
-    //메뉴명으로 먹은사람 모두 출력 -> 메뉴명 AND 가게명으로 코드 수정 필요!!!!
+    //메뉴명으로 먹은사람 모두 출력
     public List<People> findByMenu(String menu) {
         return em.createQuery("select m from People m where m.menu = :menu", People.class)
                 .setParameter("menu", menu)
+                .getResultList();
+    }
+
+    //메뉴명 AND 가게명으로 먹은사람 모두 출력
+    public List<People> findByMenuANDShop(String menu, String shop) {
+        return em.createQuery("select m from People m where m.menu = :menu and m.shop = :shop", People.class)
+                .setParameter("menu", menu)
+                .setParameter("shop", shop)
                 .getResultList();
     }
 

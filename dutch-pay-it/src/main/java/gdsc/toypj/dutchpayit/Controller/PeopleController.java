@@ -42,7 +42,7 @@ public class PeopleController {
 
     }
 
-    //메뉴명으로 먹은사람 모두 출력 -> 메뉴명 AND 가게명으로 코드 수정 필요!!!!
+    //메뉴명으로 먹은사람 모두 출력
     @GetMapping("/get/all/{Menu}")
     public ResponseEntity findByMenu(@PathVariable String Menu){
 
@@ -53,6 +53,18 @@ public class PeopleController {
         return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
 
     }
+
+    //메뉴명 AND 가게명으로 먹은사람 모두 출력
+    @GetMapping("/get/all/{Menu}&{Shop}")
+    public ResponseEntity findByMenuANDShop(@PathVariable String Menu, @PathVariable String Shop){
+
+        List<People> people = peopleService.findByMenuANDShop(Menu, Shop);
+
+        List<AllPeopleDto> collect = people.stream().map(r -> new AllPeopleDto(r)).collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
+    }
+
     //항목 업데이트
     @PostMapping("/edit/{UserId}")
     public ResponseEntity updatePeople(@PathVariable Long UserId, @RequestBody UpdatePeopleDto peopleDto) {
