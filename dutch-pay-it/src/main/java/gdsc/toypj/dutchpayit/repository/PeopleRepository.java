@@ -23,15 +23,18 @@ public class PeopleRepository {
         return em.find(People.class,id);
     }
 
-    //메뉴 찾기
-    public People findOne(String menu){
-        return em.find(People.class,menu);
-    }
-
     //삭제
     public void delete(People people){
         em.remove(people);
     }
+
+    //메뉴명으로 먹은사람 모두 출력 -> 메뉴명 AND 가게명으로 코드 수정 필요!!!!
+    public List<People> findByMenu(String menu) {
+        return em.createQuery("select m from People m where m.menu = :menu", People.class)
+                .setParameter("menu", menu)
+                .getResultList();
+    }
+
 
     //모든 테이블 확인
     public List<People> findAll(){
