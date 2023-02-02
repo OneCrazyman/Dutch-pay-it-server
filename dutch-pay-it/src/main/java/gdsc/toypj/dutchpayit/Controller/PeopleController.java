@@ -42,6 +42,17 @@ public class PeopleController {
 
     }
 
+    //메뉴명으로 먹은사람 모두 출력 -> 메뉴명 AND 가게명으로 코드 수정 필요!!!!
+    @GetMapping("/get/all/{Menu}")
+    public ResponseEntity findByMenu(@PathVariable String Menu){
+
+        List<People> people = peopleService.findByMenu(Menu);
+
+        List<AllPeopleDto> collect = people.stream().map(r -> new AllPeopleDto(r)).collect(Collectors.toList());
+
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
+
+    }
     //항목 업데이트
     @PostMapping("/edit/{UserId}")
     public ResponseEntity updatePeople(@PathVariable Long UserId, @RequestBody UpdatePeopleDto peopleDto) {

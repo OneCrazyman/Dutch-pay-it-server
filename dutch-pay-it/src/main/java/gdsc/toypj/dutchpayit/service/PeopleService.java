@@ -34,6 +34,13 @@ public class PeopleService {
         return people;
     }
 
+    //메뉴명으로 먹은사람 모두 출력 -> 메뉴명 AND 가게명으로 코드 수정 필요!!!!
+    @Transactional
+    public List<People> findByMenu(String Menu){
+        List<People> people = peopleRepository.findByMenu(Menu);
+        return people;
+    }
+
     @Transactional
     public Long updatePeople(Long peopleID, UpdatePeopleDto peopleDto){
         People people = peopleRepository.findOne(peopleID);
