@@ -55,7 +55,7 @@ public class PeopleController {
     }
 
     //메뉴명 AND 가게명으로 먹은사람 모두 출력
-    @GetMapping("/get/all/{Menu}&{Shop}")
+    @GetMapping("/get/all/{Menu}/{Shop}")
     public ResponseEntity findByMenuANDShop(@PathVariable String Menu, @PathVariable String Shop){
 
         List<People> people = peopleService.findByMenuANDShop(Menu, Shop);
