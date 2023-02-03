@@ -43,8 +43,8 @@ public class PeopleService {
 
     //메뉴명 AND 가게명으로 먹은사람 모두 출력
     @Transactional
-    public List<People> findByMenuANDShop(String Menu, String Shop){
-        List<People> people = peopleRepository.findByMenuANDShop(Menu, Shop);
+    public List<People> findByShopANDMenu(String Shop, String Menu){
+        List<People> people = peopleRepository.findByShopANDMenu(Shop, Menu);
         return people;
     }
 
