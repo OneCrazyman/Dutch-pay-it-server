@@ -36,10 +36,10 @@ public class PeopleRepository {
     }
 
     //메뉴명 AND 가게명으로 먹은사람 모두 출력
-    public List<People> findByMenuANDShop(String menu, String shop) {
-        return em.createQuery("select m from People m where m.menu = :menu and m.shop = :shop", People.class)
-                .setParameter("menu", menu)
+    public List<People> findByShopANDMenu(String shop, String menu) {
+        return em.createQuery("select m from People m where m.shop = :shop and m.menu = :menu", People.class)
                 .setParameter("shop", shop)
+                .setParameter("menu", menu)
                 .getResultList();
     }
 

@@ -55,10 +55,10 @@ public class PeopleController {
     }
 
     //메뉴명 AND 가게명으로 먹은사람 모두 출력
-    @GetMapping("/get/all/{Menu}/{Shop}")
-    public ResponseEntity findByMenuANDShop(@PathVariable String Menu, @PathVariable String Shop){
+    @GetMapping("/get/all/{Shop}/{Menu}")
+    public ResponseEntity findByShopANDMenu(@PathVariable String Shop,@PathVariable String Menu){
 
-        List<People> people = peopleService.findByMenuANDShop(Menu, Shop);
+        List<People> people = peopleService.findByShopANDMenu(Shop, Menu);
 
         List<AllPeopleDto> collect = people.stream().map(r -> new AllPeopleDto(r)).collect(Collectors.toList());
 
