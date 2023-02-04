@@ -32,7 +32,7 @@ public class UserController {
 
     }
 
-    //최근 유저키 가져오기
+    //최근 유저키 가져오기 //사용가능
     @GetMapping("/get/one")
     public ResponseEntity getOneUser(){
 

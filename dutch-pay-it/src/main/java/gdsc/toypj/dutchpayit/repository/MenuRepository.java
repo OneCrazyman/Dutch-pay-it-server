@@ -33,10 +33,11 @@ public class MenuRepository {
                 .getResultList();
     }
 
-
     public List<Menu> createdByMe(Long userId){
         return em.createQuery("select r from Menu r" +
                         " join fetch r.user m where m.id =: userId", Menu.class)
                 .setParameter("userId",userId).getResultList();
     }
+
+
 }

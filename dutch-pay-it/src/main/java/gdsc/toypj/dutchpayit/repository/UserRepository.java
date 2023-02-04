@@ -37,7 +37,7 @@ public class UserRepository {
     public User findOneUser() {
 //        r.MAX(id),r.name
 
-        return em.createQuery("select r.id from User r order by r.id", User.class)
+        return em.createQuery("select r from User r where r.id = (select MAX(r.id) from User r)", User.class)
                 .getSingleResult();
     }
 }
