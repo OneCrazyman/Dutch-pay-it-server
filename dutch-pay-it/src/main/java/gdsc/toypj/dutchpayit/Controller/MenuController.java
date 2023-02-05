@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,9 +27,21 @@ import java.util.stream.Collectors;
 public class MenuController {
     private final MenuService menuService;
 
+    //form데이터로 request와 image를 받음
+    //ML로 이미지 전송 (개발중)
+    //분석 후 디비에 저장되면 리턴 (개발중)
+    //
     @PostMapping(value = "/send/image", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
-    public void sendImage(@RequestPart CreateImageDto request, @RequestPart MultipartFile imgFile){
-        log.info("key_name:{}, image:{}", request.getKey_name(), imgFile);
+    public ResponseEntity sendImage(@RequestPart(value = "request") CreateImageDto request, @RequestPart(value = "image") MultipartFile imgFile,
+                            HttpServletRequest httpServletRequest) throws IllegalStateException, IOException {
+
+        log.info("key_name:{}, shop:{}, image:{}", request.getKey_name(), request.getShop(), imgFile);
+        try {
+            Thread.sleep(3000);
+        } catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        return getAllMenu();
     }
 
     //메뉴 생성하기
