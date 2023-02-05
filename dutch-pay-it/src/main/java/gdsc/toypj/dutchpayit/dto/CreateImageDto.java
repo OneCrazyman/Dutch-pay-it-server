@@ -5,4 +5,5 @@ package gdsc.toypj.dutchpayit.dto;
 @Data
 public class CreateImageDto {
     private Long key_name;
+    private String shop;
 }
