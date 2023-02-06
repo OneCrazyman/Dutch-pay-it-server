@@ -5,6 +5,7 @@ import gdsc.toypj.dutchpayit.dto.AllMenuDto;
 import gdsc.toypj.dutchpayit.dto.CreateImageDto;
 import gdsc.toypj.dutchpayit.dto.CreateMenuDto;
 import gdsc.toypj.dutchpayit.dto.UpdateMenuDto;
+import gdsc.toypj.dutchpayit.repository.MenuRepository;
 import gdsc.toypj.dutchpayit.response.SuccessResponse;
 import gdsc.toypj.dutchpayit.service.MenuService;
 import lombok.RequiredArgsConstructor;
@@ -26,22 +27,24 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MenuController {
     private final MenuService menuService;
+    private final MenuRepository menuRepository;
 
     //form데이터로 request와 image를 받음
     //ML로 이미지 전송 (개발중)
     //분석 후 디비에 저장되면 리턴 (개발중)
-    //
+
     @PostMapping(value = "/send/image", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity sendImage(@RequestPart(value = "request") CreateImageDto request, @RequestPart(value = "image") MultipartFile imgFile,
-                            HttpServletRequest httpServletRequest) throws IllegalStateException, IOException {
+                            HttpServletRequest httpServletRequest) throws IllegalStateException, IOException, InterruptedException {
 
         log.info("key_name:{}, shop:{}, image:{}", request.getKey_name(), request.getShop(), imgFile);
-        try {
-            Thread.sleep(3000);
-        } catch(InterruptedException e){
-            e.printStackTrace();
-        }
-        return getAllMenu();
+
+        //파이썬 서버가 켜져있어야 오류가 안뜸
+        menuRepository.sendImageToPython(imgFile);
+
+        List<Menu> menu = menuService.getImageMenu(request.getKey_name(),request.getShop());
+        List<AllMenuDto> collect = menu.stream().map(r -> new AllMenuDto(r)).collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(new SuccessResponse(200,collect));
     }
 
     //메뉴 생성하기

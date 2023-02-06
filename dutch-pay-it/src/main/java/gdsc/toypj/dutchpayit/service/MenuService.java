@@ -58,4 +58,19 @@ public class MenuService {
         //삭제
         menuRepository.delete(findMenu);
     }
+
+    //DB에서 메뉴항목 가져오기
+    @Transactional
+    public List<Menu> getImageMenu(Long user, String shop) throws InterruptedException {
+        List<Menu> menu = null;
+        
+        for(int i=0;i<3;i++) {
+            menu = menuRepository.findByUserAndShop(user, shop);
+            if (!menu.isEmpty()) {
+                break;
+            }
+            Thread.sleep(1000);
+        }
+        return menu;
+    }
 }

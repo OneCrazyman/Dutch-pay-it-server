@@ -1,10 +1,9 @@
-
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/dutchpayit
-    username: root
-    password: 1234
+    url: jdbc:mariadb://dutchpay-it-rdb.cicoecqa7q2u.ap-northeast-2.rds.amazonaws.com:3306/dutchpay_it_db
+    username: admin
+    password: 'sean9045'
   jpa:
     show-sql: true
     hibernate:
