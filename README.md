@@ -1,4 +1,4 @@
-[GDSC-SCH 연합 토이 프로젝트 C팀](https://www.notion.so/GDSC-SCH-C-fcac7de44d46471fa663d60a952bd0e4)
+[GDSC-SCH 연합 토이 프로젝트 C팀](https://humane-bagpipe-45a.notion.site/GDSC-SCH-C-fcac7de44d46471fa663d60a952bd0e4)
 =============================
 #Dutch Pay It
 
