@@ -1,4 +1,4 @@
-[GDSC-SCH 연합 토이 프로젝트 C팀]( https://www.notion.so/GDSC-SCH-C-39d76bb123d64f03a5894d674ffd0af5)
+[GDSC-SCH 연합 토이 프로젝트 C팀](https://www.notion.so/GDSC-SCH-C-fcac7de44d46471fa663d60a952bd0e4)
 =============================
 #Dutch Pay It
 
